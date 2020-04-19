@@ -43,7 +43,7 @@ class _CovidTimeSeriesChartState extends State<CovidTimeSeriesChart> {
             style: TextStyle(color: Colors.white30),
           ),
           SizedBox(
-            height: 200.0,
+            height: 180.0,
             child: chart,
           ),
         ],
