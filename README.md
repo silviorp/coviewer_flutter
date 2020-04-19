@@ -2,9 +2,7 @@
 
 This is a Flutter app that shows data and charts about the Covid 19 disease evolution in a majority of countries in the world.
 
-<img src="demo/Screenshot_1587331669.png" width="220"/>
-<img src="demo/Screenshot_1587331676.png" width="220"/>
-<img src="demo/Screenshot_1587331686.png" width="220"/>
+<img src="demo/Screenshot_1587331669.png" width="200"/>   <img src="demo/Screenshot_1587331676.png" width="200"/>   <img src="demo/Screenshot_1587331686.png" width="200"/>
 
 ## Libraries Used
 - Flutter SDK
