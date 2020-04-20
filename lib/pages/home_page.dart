@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
-                'CoViewer',
+                'Covid World Stats',
                 style: TextStyle(
                   color: Colors.white54,
                   fontSize: 20.0,

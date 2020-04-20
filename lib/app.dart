@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'CoViewer',
+      title: 'Covid World Stats',
       home: ChangeNotifierProvider(
         create: (context) => CovidHomeViewModel(),
         child: HomePage(),
