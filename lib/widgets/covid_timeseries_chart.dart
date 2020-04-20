@@ -15,7 +15,34 @@ class CovidTimeSeriesChart extends StatefulWidget {
 class _CovidTimeSeriesChartState extends State<CovidTimeSeriesChart> {
   @override
   Widget build(BuildContext context) {
-    var series = [
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Text(
+            widget.title,
+            style: TextStyle(color: Colors.white30),
+          ),
+          Expanded(
+            child: _getChartWidget(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  charts.TimeSeriesChart _getChartWidget() {
+    return charts.TimeSeriesChart(
+      _getChartSeries(),
+      animate: true,
+      defaultRenderer: charts.BarRendererConfig<DateTime>(),
+      defaultInteractions: false,
+    );
+  }
+
+  List<charts.Series<ChartStatData, DateTime>> _getChartSeries() {
+    return [
       charts.Series(
         id: 'Cases',
         domainFn: (ChartStatData data, _) => data.date,
@@ -25,29 +52,5 @@ class _CovidTimeSeriesChartState extends State<CovidTimeSeriesChart> {
         data: widget.chartData,
       ),
     ];
-
-    var chart = charts.TimeSeriesChart(
-      series,
-      animate: true,
-      defaultRenderer: charts.BarRendererConfig<DateTime>(),
-      defaultInteractions: false,
-      behaviors: [charts.SelectNearest(), charts.DomainHighlighter()],
-    );
-
-    return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Column(
-        children: <Widget>[
-          Text(
-            widget.title,
-            style: TextStyle(color: Colors.white30),
-          ),
-          SizedBox(
-            height: 170.0,
-            child: chart,
-          ),
-        ],
-      ),
-    );
   }
 }
