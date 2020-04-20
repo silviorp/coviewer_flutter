@@ -106,29 +106,33 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-                flex: 1,
-                child: CovidTimeSeriesChart(
-                  chartData: viewModel.getValidCases(),
-                  title: 'Daily Cases',
-                )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Expanded(
-                    flex: 1,
-                    child: CovidTimeSeriesChart(
-                      chartData: viewModel.getValidDeaths(),
-                      title: 'Daily Deaths',
-                    )),
-                Expanded(
-                    flex: 1,
-                    child: CovidTimeSeriesChart(
-                      chartData: viewModel.getValidRecovered(),
-                      title: 'Daily Recovered',
-                    )),
-              ],
+            Flexible(
+              flex: 1,
+              child: CovidTimeSeriesChart(
+                chartData: viewModel.getValidCases(),
+                title: 'Daily Cases',
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Expanded(
+                      flex: 1,
+                      child: CovidTimeSeriesChart(
+                        chartData: viewModel.getValidDeaths(),
+                        title: 'Daily Deaths',
+                      )),
+                  Expanded(
+                      flex: 1,
+                      child: CovidTimeSeriesChart(
+                        chartData: viewModel.getValidRecovered(),
+                        title: 'Daily Recovered',
+                      )),
+                ],
+              ),
             ),
           ],
         ),

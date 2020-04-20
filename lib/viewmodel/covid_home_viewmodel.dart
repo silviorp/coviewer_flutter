@@ -1,6 +1,6 @@
+import 'package:covidviewerflutter/model/chart_stat_data.dart';
 import 'package:covidviewerflutter/model/country.dart';
 import 'package:covidviewerflutter/model/country_stats.dart';
-import 'package:covidviewerflutter/model/daily_stat.dart';
 import 'package:covidviewerflutter/repository/covid_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -63,22 +63,30 @@ class CovidHomeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  List<DailyStat> getValidCases() {
+  List<ChartStatData> getValidCases() {
     return selected?.stats
             ?.where((element) => element.confirmed > 0)
+            ?.toList()
+            ?.map((e) => ChartStatData(date: e.date, count: e.confirmed))
             ?.toList() ??
-        <DailyStat>[];
+        <ChartStatData>[];
   }
 
-  List<DailyStat> getValidDeaths() {
-    return selected?.stats?.where((element) => element.deaths > 0)?.toList() ??
-        <DailyStat>[];
+  List<ChartStatData> getValidDeaths() {
+    return selected?.stats
+            ?.where((element) => element.deaths > 0)
+            ?.toList()
+            ?.map((e) => ChartStatData(date: e.date, count: e.deaths))
+            ?.toList() ??
+        <ChartStatData>[];
   }
 
-  List<DailyStat> getValidRecovered() {
+  List<ChartStatData> getValidRecovered() {
     return selected?.stats
             ?.where((element) => element.recovered > 0)
+            ?.toList()
+            ?.map((e) => ChartStatData(date: e.date, count: e.recovered))
             ?.toList() ??
-        <DailyStat>[];
+        <ChartStatData>[];
   }
 }
