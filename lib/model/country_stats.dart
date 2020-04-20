@@ -7,9 +7,11 @@ class CountryStats {
   CountryStats.full(
       {this.country,
       this.totalCases,
-      this.totalDeaths,
-      this.totalRecovered,
       this.totalNewCases,
+      this.totalDeaths,
+      this.totalNewDeaths,
+      this.totalRecovered,
+      this.totalNewRecovered,
       this.stats});
 
   Country country;

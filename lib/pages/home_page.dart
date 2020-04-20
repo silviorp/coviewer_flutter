@@ -1,4 +1,5 @@
 import 'package:covidviewerflutter/viewmodel/covid_home_viewmodel.dart';
+import 'package:covidviewerflutter/widgets/covid_stats_card.dart';
 import 'package:covidviewerflutter/widgets/covid_timeseries_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -146,12 +147,7 @@ class _HomePageState extends State<HomePage> {
       color: Color(0x121517),
       height: 180.0,
       child: viewModel.isLoadingStats
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                CircularProgressIndicator(),
-              ],
-            )
+          ? Center(child: CircularProgressIndicator())
           : (viewModel.loadStatsException != null
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -195,81 +191,34 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         Expanded(
                           flex: 1,
-                          child: _getStatItem(
-                              Colors.blue,
-                              'Cases',
-                              viewModel.selected?.totalCases ?? 0,
-                              viewModel.selected?.totalNewCases ?? 0),
+                          child: CovidStatCard(
+                              color: Colors.blue,
+                              text: 'Cases',
+                              value: viewModel.selected?.totalCases ?? 0,
+                              newValue: viewModel.selected?.totalNewCases ?? 0),
                         ),
                         Expanded(
                           flex: 1,
-                          child: _getStatItem(
-                              Colors.red,
-                              'Deaths',
-                              viewModel.selected?.totalDeaths ?? 0,
-                              viewModel.selected?.totalNewDeaths ?? 0),
+                          child: CovidStatCard(
+                              color: Colors.red,
+                              text: 'Deaths',
+                              value: viewModel.selected?.totalDeaths ?? 0,
+                              newValue:
+                                  viewModel.selected?.totalNewDeaths ?? 0),
                         ),
                         Expanded(
                           flex: 1,
-                          child: _getStatItem(
-                              Colors.green,
-                              'Recovered',
-                              viewModel.selected?.totalRecovered ?? 0,
-                              viewModel.selected?.totalNewRecovered ?? 0),
+                          child: CovidStatCard(
+                              color: Colors.green,
+                              text: 'Recovered',
+                              value: viewModel.selected?.totalRecovered ?? 0,
+                              newValue:
+                                  viewModel.selected?.totalNewRecovered ?? 0),
                         ),
                       ],
                     ),
                   ],
                 )),
-    );
-  }
-
-  Widget _getStatItem(Color squareColor, String text, int value, int newValue) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 120.0,
-        padding: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          color: squareColor,
-        ),
-        child: Column(
-          children: <Widget>[
-            Text(
-              '$text',
-              style: TextStyle(
-                  color: Colors.grey[200],
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.0),
-            ),
-            Text(
-              '$value',
-              style: TextStyle(
-                  color: Colors.grey[200],
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.0),
-            ),
-            Expanded(
-              child: Container(),
-            ),
-            Text(
-              'Daily',
-              style: TextStyle(
-                  color: Colors.grey[200],
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.0),
-            ),
-            Text(
-              '$newValue',
-              style: TextStyle(
-                  color: Colors.grey[200],
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.0),
-            ),
-          ],
-        ),
-      ),
     );
   }
 

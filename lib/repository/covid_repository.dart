@@ -51,7 +51,9 @@ class CovidRepository {
     final country = Country.getGlobal();
     int totalCases = 0;
     int totalDeaths = 0;
+    int totalNewDeaths = 0;
     int totalRecovered = 0;
+    int totalNewRecovered = 0;
     int totalNewCases = 0;
 
     List<DailyStat> dailyStats = <DailyStat>[];
@@ -61,6 +63,8 @@ class CovidRepository {
       totalDeaths += element.totalDeaths;
       totalRecovered += element.totalRecovered;
       totalNewCases += element.totalNewCases;
+      totalNewDeaths += element.totalNewDeaths;
+      totalNewRecovered += element.totalNewRecovered;
 
       element.stats.forEach((element) {
         final index = dailyStats
@@ -83,9 +87,11 @@ class CovidRepository {
     return CountryStats.full(
         country: country,
         totalDeaths: totalDeaths,
+        totalNewDeaths: totalNewDeaths,
         totalCases: totalCases,
         totalNewCases: totalNewCases,
         totalRecovered: totalRecovered,
+        totalNewRecovered: totalNewRecovered,
         stats: dailyStats);
   }
 }
