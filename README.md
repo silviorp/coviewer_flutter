@@ -17,3 +17,17 @@ This is a Flutter app that shows data and charts about the Covid 19 disease evol
 I've used the Pomber/Covid19 Json time-series as the major API.
 It can be found in https://github.com/pomber/covid19.
 Thanks for making it available to all of us!
+
+
+## How to contribute..??
+
+If you are reading this README.md file then you have already opened the repository.
+Now you can go to the ISSUES section on top (beside CODE section). There you will
+find various issues and you can choose one or multiple to fix. 
+
+To fix the issue read the requirement properly and understand the issue, then you can 
+fork a copy of the project so that you can work on it locally on your system. You can 
+also read above on how to run the code locally. After fixing the code you can generate 
+a pull request to the maintainer of this project. Who will then verify the project and 
+revert back to you with his feedback, and accordingly you can make changes. If the 
+maintainer is satisfied with your work, he will merge your patch in the project.
