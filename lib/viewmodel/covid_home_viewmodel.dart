@@ -27,11 +27,11 @@ class CovidHomeViewModel with ChangeNotifier {
 
     _fetchCountries();
     await storage.getCountryName();
-    await _setSelected();
+    _setSelected();
     _setLoadingStats(false);
   }
 
-  Future<void> _setSelected() async {
+  void _setSelected() {
     storage.selectedCountry == 'global'
         ? this.selected =
             stats.firstWhere((element) => element.country.iso2Lower == 'global')
@@ -50,7 +50,7 @@ class CovidHomeViewModel with ChangeNotifier {
     _setLoadingCountries(false);
   }
 
-  void selectCountry(String countryName) async {
+  Future<void> selectCountry(String countryName) async {
     this.selected = this.stats.firstWhere(
         (element) =>
             element.country.name.contains(_clearSelection(countryName)),
