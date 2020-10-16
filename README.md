@@ -18,6 +18,28 @@ I've used the Pomber/Covid19 Json time-series as the major API.
 It can be found in https://github.com/pomber/covid19.
 Thanks for making it available to all of us!
 
+## APK
+**Android**
+Build and install a release version on Android.
+
+**Build the APK**
+From the command line:
+
+1.  Enter  `cd <app dir>`  
+    (Replace  `<app dir>`  with CoViewer directory)
+2.  Run  `flutter build apk --split-per-abi`  
+    (The  `flutter build`  command defaults to  `--release`.)
+    
+**Install the APK on a device**
+
+Follow these steps to install the APK on a connected Android device.
+
+From the command line:
+
+1.  Connect your Android device to your computer with a USB cable.
+2.  Enter  `cd <app dir>`  where  `<app dir>`  is CoViewer directory.
+3.  Run  `flutter install`.
+    
 
 ## How to contribute..??
 
@@ -31,3 +53,5 @@ also read above on how to run the code locally. After fixing the code you can ge
 a pull request to the maintainer of this project. Who will then verify the project and 
 revert back to you with his feedback, and accordingly you can make changes. If the 
 maintainer is satisfied with your work, he will merge your patch in the project.
+
+
