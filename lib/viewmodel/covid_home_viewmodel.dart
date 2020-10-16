@@ -26,18 +26,18 @@ class CovidHomeViewModel with ChangeNotifier {
     this.stats = await repository.getAllStats();
 
     _fetchCountries();
+    await storage.getCountryName();
     await _setSelected();
     _setLoadingStats(false);
   }
 
   Future<void> _setSelected() async {
-    String countryName = await storage.getCountryName();
-    countryName == 'global'
+    storage.selectedCountry == 'global'
         ? this.selected =
             stats.firstWhere((element) => element.country.iso2Lower == 'global')
         : this.selected = this.stats.firstWhere(
-            (element) =>
-                element.country.name.contains(_clearSelection(countryName)),
+            (element) => element.country.name
+                .contains(_clearSelection(storage.selectedCountry)),
             orElse: null);
   }
 
