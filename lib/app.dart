@@ -8,11 +8,18 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Covid World Stats',
-      home: ChangeNotifierProvider(
-        create: (context) => CovidHomeViewModel(),
-        child: HomePage(),
+      theme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColor: Colors.blueGrey
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Covid World Stats'),
+        ),
+        body: ChangeNotifierProvider(
+          create: (context) => CovidHomeViewModel(),
+          child: HomePage(),
+        ),
       ),
     );
   }

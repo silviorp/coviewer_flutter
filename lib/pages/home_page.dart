@@ -52,18 +52,27 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
+
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                'Covid World Stats',
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 20.0,
+            child: InkWell(
+              onTap: (){
+                _showPickerModal(context, viewModel);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  viewModel.selected?.country?.name ?? '',
+                  style: TextStyle(
+                    color: Colors.white54,
+                    fontSize: 20.0,
+                  ),
                 ),
+
               ),
             ),
           ),
+
+
           viewModel.selected?.country?.iso2Lower == 'global'
               ? Image.network(
                   'https://icons.iconarchive.com/icons/icons-land/vista-flags/256/United-Nations-Flag-1-icon.png',
@@ -76,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                   : Container()),
           viewModel.isLoadingStats
               ? Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.only(left: 300.0),//all(20.0),
                   child: Container(
                     height: 16.0,
                     width: 16.0,
@@ -177,13 +186,6 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Text(
-                      viewModel.selected?.country?.name ?? '',
-                      style: TextStyle(
-                          color: Colors.white54,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20.0),
-                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
