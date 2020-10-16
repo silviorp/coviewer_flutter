@@ -27,7 +27,9 @@ From the command line:
 
 1.  Enter  `cd <app dir>`  
     (Replace  `<app dir>`  with CoViewer directory)
-2.  Run  `flutter build apk --split-per-abi`  
+2.  Run `flutter pub get` 
+     (to install all the packages required)
+3.  Run  `flutter build apk --split-per-abi`  
     (The  `flutter build`  command defaults to  `--release`.)
     
 **Install the APK on a device**
