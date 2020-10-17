@@ -39,7 +39,24 @@ From the command line:
 1.  Connect your Android device to your computer with a USB cable.
 2.  Enter  `cd <app dir>`  where  `<app dir>`  is CoViewer directory.
 3.  Run  `flutter install`.
-    
+
+## Getting Started
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+
+## Setting up the Project
+
+1. Go to [the project repo](https://github.com/shrpereira/coviewer_flutter) and fork it by clicking "Fork" 
+2. If you are working on Windows, download [Git Bash for Windows](https://git-for-windows.github.io/) to get a full Unix bash with Git functionality
+3. Clone the repo to your desktop `git clone https://github.com/YOUR_USERNAME/coviewer_flutter.git`
+4. Open the project
 
 ## How to contribute..??
 
