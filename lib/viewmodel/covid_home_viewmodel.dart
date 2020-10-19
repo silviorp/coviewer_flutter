@@ -2,6 +2,7 @@ import 'package:covidviewerflutter/model/chart_stat_data.dart';
 import 'package:covidviewerflutter/model/country.dart';
 import 'package:covidviewerflutter/model/country_stats.dart';
 import 'package:covidviewerflutter/repository/covid_repository.dart';
+import 'package:covidviewerflutter/storage/user_storage.dart';
 import 'package:flutter/material.dart';
 
 class CovidHomeViewModel with ChangeNotifier {
@@ -17,6 +18,7 @@ class CovidHomeViewModel with ChangeNotifier {
   bool isLoadingStats = false;
   bool isLoadingCountries = false;
   Exception loadStatsException;
+  UserStorage storage = UserStorage();
 
   Future<void> fetchStats() async {
     _setLoadingStats(true);
@@ -24,13 +26,19 @@ class CovidHomeViewModel with ChangeNotifier {
     this.stats = await repository.getAllStats();
 
     _fetchCountries();
+    await storage.getCountryName();
     _setSelected();
     _setLoadingStats(false);
   }
 
   void _setSelected() {
-    this.selected =
-        stats.firstWhere((element) => element.country.iso2Lower == 'global');
+    storage.selectedCountry == 'global'
+        ? this.selected =
+            stats.firstWhere((element) => element.country.iso2Lower == 'global')
+        : this.selected = this.stats.firstWhere(
+            (element) => element.country.name
+                .contains(_clearSelection(storage.selectedCountry)),
+            orElse: null);
   }
 
   void _fetchCountries() {
@@ -42,11 +50,12 @@ class CovidHomeViewModel with ChangeNotifier {
     _setLoadingCountries(false);
   }
 
-  void selectCountry(String countryName) {
+  Future<void> selectCountry(String countryName) async {
     this.selected = this.stats.firstWhere(
         (element) =>
             element.country.name.contains(_clearSelection(countryName)),
         orElse: null);
+    await storage.setCountryName(_clearSelection(countryName));
     notifyListeners();
   }
 

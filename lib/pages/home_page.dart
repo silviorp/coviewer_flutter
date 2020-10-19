@@ -247,8 +247,8 @@ class _HomePageState extends State<HomePage> {
         color: Colors.white54,
         fontSize: 24.0,
       ),
-      onConfirm: (Picker picker, List value) {
-        viewModel.selectCountry(picker.adapter.text);
+      onConfirm: (Picker picker, List value) async {
+        await viewModel.selectCountry(picker.adapter.text);
       },
     ).showModal(this.context);
   }
